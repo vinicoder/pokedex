@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import { SvgUri } from 'react-native-svg';
 
 export const Container = styled.ImageBackground.attrs({
   imageStyle: { width: 414, height: 207 },
@@ -26,16 +25,12 @@ export const ButtonFilter = styled.TouchableOpacity.attrs({
   margin-left: 20px;
 `;
 
-export const ButtonFilterIcon = styled(SvgUri)`
-  width: 25px;
-  height: 25px;
-`;
-
 export const Title = styled.Text`
   font-size: 32px;
   line-height: 38px;
   font-weight: bold;
   margin-bottom: 10px;
+  font-family: 'SFProDisplay-Bold';
 `;
 
 export const Description = styled.Text`
@@ -43,14 +38,25 @@ export const Description = styled.Text`
   line-height: 19px;
   color: #747476;
   margin-bottom: 25px;
+  font-family: 'SFProDisplay-Regular';
 `;
 
 export const FormSearch = styled.View`
   background: #f2f2f2;
   border-radius: 10px;
   height: 60px;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 25px;
 `;
 
-export const InputSearch = styled.TextInput`
+export const InputSearch = styled.TextInput.attrs({
+  placeholderTextColor: '#747476',
+})`
   flex: 1;
+  font-size: 16px;
+  line-height: 19px;
+  color: #747476;
+  margin-left: 10px;
+  font-family: 'SFProDisplay-Regular';
 `;

@@ -6,7 +6,6 @@ import {
   Header,
   Filters,
   ButtonFilter,
-  ButtonFilterIcon,
   Title,
   Description,
   FormSearch,
@@ -14,9 +13,10 @@ import {
 } from './styles';
 
 import bgImage from '../../assets/home/bg.png';
-import IconFilterGeneration from '../../assets/icons/generation.svg';
-import IconFilterSort from '../../assets/icons/sort.svg';
-import IconFilterFilter from '../../assets/icons/filter.svg';
+import IconGeneration from '../../assets/icons/generation.svg';
+import IconSort from '../../assets/icons/sort.svg';
+import IconFilter from '../../assets/icons/filter.svg';
+import IconSearch from '../../assets/icons/search.svg';
 
 const Home: React.FC = () => (
   <Container source={bgImage}>
@@ -24,13 +24,13 @@ const Home: React.FC = () => (
       <Header>
         <Filters>
           <ButtonFilter>
-            <IconFilterGeneration />
+            <IconGeneration />
           </ButtonFilter>
           <ButtonFilter>
-            <IconFilterSort />
+            <IconSort />
           </ButtonFilter>
           <ButtonFilter>
-            <IconFilterFilter />
+            <IconFilter />
           </ButtonFilter>
         </Filters>
         <Title>Pokédex</Title>
@@ -38,6 +38,7 @@ const Home: React.FC = () => (
           Search for Pokémon by name or using the National Pokédex number.
         </Description>
         <FormSearch>
+          <IconSearch />
           <InputSearch placeholder="What Pokémon are you looking for?" />
         </FormSearch>
       </Header>

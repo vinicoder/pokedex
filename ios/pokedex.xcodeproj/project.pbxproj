@@ -20,6 +20,9 @@
 		3D5E29B8288BE3A8CFB46D05 /* libPods-pokedex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB41618E0C6A4237EE6FB189 /* libPods-pokedex.a */; };
 		40A86BD2393BFADB24800B8E /* libPods-pokedex-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C090FD65C394CBCAA3C2DBC /* libPods-pokedex-tvOS.a */; };
 		49596406D40F421344D3B4C2 /* libPods-pokedex-pokedexTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3D9D9D83233613506313FD1 /* libPods-pokedex-pokedexTests.a */; };
+		64A1102FA23B4119898EB073 /* SFProDisplay-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E010B504E44346878D1C51DF /* SFProDisplay-Bold.otf */; };
+		D3847FD9DE6A4C31AF7A5C45 /* SFProDisplay-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A82180A147C24C9C8BBFF67F /* SFProDisplay-Medium.otf */; };
+		988D1F8EE9CA42F0958E40FF /* SFProDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0778B2086BD34376BBDF867A /* SFProDisplay-Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,9 @@
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F5B83F09E66E73F2D74D2637 /* Pods-pokedex-pokedexTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pokedex-pokedexTests.debug.xcconfig"; path = "Target Support Files/Pods-pokedex-pokedexTests/Pods-pokedex-pokedexTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F6E80B573C9BC1979A844CBE /* Pods-pokedex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pokedex.debug.xcconfig"; path = "Target Support Files/Pods-pokedex/Pods-pokedex.debug.xcconfig"; sourceTree = "<group>"; };
+		E010B504E44346878D1C51DF /* SFProDisplay-Bold.otf */ = {isa = PBXFileReference; name = "SFProDisplay-Bold.otf"; path = "../assets/fonts/SFProDisplay-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A82180A147C24C9C8BBFF67F /* SFProDisplay-Medium.otf */ = {isa = PBXFileReference; name = "SFProDisplay-Medium.otf"; path = "../assets/fonts/SFProDisplay-Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0778B2086BD34376BBDF867A /* SFProDisplay-Regular.otf */ = {isa = PBXFileReference; name = "SFProDisplay-Regular.otf"; path = "../assets/fonts/SFProDisplay-Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +187,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				6981953E98D2D98B3202DA45 /* Pods */,
+				CFC82B5817ED48B98EB0AC9A /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -197,6 +204,17 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		CFC82B5817ED48B98EB0AC9A /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				E010B504E44346878D1C51DF /* SFProDisplay-Bold.otf */,
+				A82180A147C24C9C8BBFF67F /* SFProDisplay-Medium.otf */,
+				0778B2086BD34376BBDF867A /* SFProDisplay-Regular.otf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -340,6 +358,9 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				64A1102FA23B4119898EB073 /* SFProDisplay-Bold.otf in Resources */,
+				D3847FD9DE6A4C31AF7A5C45 /* SFProDisplay-Medium.otf in Resources */,
+				988D1F8EE9CA42F0958E40FF /* SFProDisplay-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
