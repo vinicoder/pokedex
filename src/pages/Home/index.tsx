@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, FlatList } from 'react-native';
 import {
   Container,
   Header,
@@ -17,6 +17,19 @@ import IconGeneration from '../../assets/icons/generation.svg';
 import IconSort from '../../assets/icons/sort.svg';
 import IconFilter from '../../assets/icons/filter.svg';
 import IconSearch from '../../assets/icons/search.svg';
+
+import Item from '../../components/Item';
+
+const tempData = [
+  {
+    name: 'bulbasaur',
+    url: 'https://pokeapi.co/api/v2/pokemon/1/',
+  },
+  {
+    name: 'ivysaur',
+    url: 'https://pokeapi.co/api/v2/pokemon/2/',
+  },
+];
 
 const Home: React.FC = () => (
   <Container source={bgImage}>
@@ -43,6 +56,11 @@ const Home: React.FC = () => (
         </FormSearch>
       </Header>
     </SafeAreaView>
+    <FlatList
+      data={tempData}
+      renderItem={({ item }) => <Item name={item.name} />}
+      keyExtractor={(item) => item.name}
+    />
   </Container>
 );
 
