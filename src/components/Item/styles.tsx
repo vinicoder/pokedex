@@ -50,10 +50,3 @@ export const ImageContainer = styled.View`
   height: 130px;
   margin-top: -45px;
 `;
-
-export const Image = styled.ImageBackground.attrs({
-  resizeMode: 'cover',
-  justifyContent: 'center',
-})`
-  flex: 1;
-`;

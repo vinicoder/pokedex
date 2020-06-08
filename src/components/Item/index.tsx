@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { ActivityIndicator } from 'react-native';
-import { SvgXml } from 'react-native-svg';
-import axios from 'axios';
 import api from '../../services/api';
 import { formatNumber } from '../../utils';
 
@@ -9,7 +7,6 @@ import {
   Container,
   Info,
   ImageContainer,
-  Image,
   Number,
   Name,
   Badges,
@@ -17,6 +14,8 @@ import {
 
 import bgItem from '../../assets/item/bg.png';
 import Badge from '../Badge';
+
+import Image from '../Image';
 
 interface Props {
   url: string;
@@ -40,8 +39,6 @@ const Item: React.FC<Props> = ({ url }: Props) => {
   const [pokemonData, setPokemonData] = useState<PokemonProps>(
     {} as PokemonProps,
   );
-  const [image, setImage] = useState<string>('');
-  const [imageFallback, setImageFallback] = useState<boolean>(false);
 
   useEffect(() => {
     if (pokemonData.id) return;
@@ -60,25 +57,6 @@ const Item: React.FC<Props> = ({ url }: Props) => {
     loadPokemon();
   }, [url, pokemonData]);
 
-  useEffect(() => {
-    if (image) return;
-    if (!pokemonData.id) return;
-
-    async function loadImage() {
-      try {
-        const response = await axios.get(
-          `https://raw.githubusercontent.com/jnovack/pokemon-svg/master/svg/${pokemonData.id}.svg`,
-        );
-        setImage(response.data);
-      } catch (e) {
-        setImageFallback(true);
-        console.log(`loadImage(): ${pokemonData.id} - ${e}`);
-      }
-    }
-
-    loadImage();
-  }, [pokemonData.id, image]);
-
   return (
     <>
       {loading ? (
@@ -95,12 +73,7 @@ const Item: React.FC<Props> = ({ url }: Props) => {
             </Badges>
           </Info>
           <ImageContainer>
-            {image.length > 0 && (
-              <SvgXml xml={image} width={130} height={130} />
-            )}
-            {imageFallback && (
-              <Image source={{ uri: pokemonData.sprites.front_default }} />
-            )}
+            <Image pokemon={pokemonData} width={130} height={130} />
           </ImageContainer>
         </Container>
       )}
