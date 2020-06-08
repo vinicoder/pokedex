@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { FlatList } from 'react-native';
+import api from '../../services/api';
 
-import { SafeAreaView, FlatList } from 'react-native';
 import {
-  Container,
   Header,
   Filters,
   ButtonFilter,
@@ -20,48 +20,62 @@ import IconSearch from '../../assets/icons/search.svg';
 
 import Item from '../../components/Item';
 
-const tempData = [
-  {
-    name: 'bulbasaur',
-    url: 'https://pokeapi.co/api/v2/pokemon/1/',
-  },
-  {
-    name: 'ivysaur',
-    url: 'https://pokeapi.co/api/v2/pokemon/2/',
-  },
-];
+interface DataProps {
+  name: string;
+  url: string;
+}
 
-const Home: React.FC = () => (
-  <Container source={bgImage}>
-    <SafeAreaView>
-      <Header>
-        <Filters>
-          <ButtonFilter>
-            <IconGeneration />
-          </ButtonFilter>
-          <ButtonFilter>
-            <IconSort />
-          </ButtonFilter>
-          <ButtonFilter>
-            <IconFilter />
-          </ButtonFilter>
-        </Filters>
-        <Title>Pokédex</Title>
-        <Description>
-          Search for Pokémon by name or using the National Pokédex number.
-        </Description>
-        <FormSearch>
-          <IconSearch />
-          <InputSearch placeholder="What Pokémon are you looking for?" />
-        </FormSearch>
-      </Header>
-    </SafeAreaView>
+const Home: React.FC = () => {
+  const [data, setData] = useState<DataProps[]>([]);
+
+  useEffect(() => {
+    async function loadPokemons() {
+      try {
+        const response = await api.get('pokemon');
+        setData(response.data.results);
+      } catch (e) {
+        console.log(`loadPokemons: ${e}`);
+      }
+    }
+
+    loadPokemons();
+  }, []);
+
+  const ListHeader = () => (
+    <Header source={bgImage}>
+      <Filters>
+        <ButtonFilter>
+          <IconGeneration />
+        </ButtonFilter>
+        <ButtonFilter>
+          <IconSort />
+        </ButtonFilter>
+        <ButtonFilter>
+          <IconFilter />
+        </ButtonFilter>
+      </Filters>
+      <Title>Pokédex</Title>
+      <Description>
+        Search for Pokémon by name or using the National Pokédex number.
+      </Description>
+      <FormSearch>
+        <IconSearch />
+        <InputSearch placeholder="What Pokémon are you looking for?" />
+      </FormSearch>
+    </Header>
+  );
+
+  return (
     <FlatList
-      data={tempData}
-      renderItem={({ item }) => <Item name={item.name} />}
+      data={data}
+      renderItem={({ item }) => <Item url={item.url} />}
       keyExtractor={(item) => item.name}
+      stickyHeaderIndices={[0]}
+      ListHeaderComponent={ListHeader}
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{ paddingHorizontal: 40 }}
     />
-  </Container>
-);
+  );
+};
 
 export default Home;

@@ -1,14 +1,15 @@
 import styled from 'styled-components/native';
+import { StatusBar } from 'react-native';
 
-export const Container = styled.ImageBackground.attrs({
-  imageStyle: { width: 414, height: 207 },
+export const Header = styled.ImageBackground.attrs({
+  imageStyle: { width: 414, height: 414, marginTop: -207 },
   resizeMode: 'center',
 })`
-  flex: 1;
-`;
-
-export const Header = styled.View`
-  padding: 40px;
+  background-color: #fff;
+  padding-bottom: 20px;
+  padding-top: ${`${
+    StatusBar.currentHeight ? 40 + StatusBar.currentHeight : 40
+  }px`};
 `;
 
 export const Filters = styled.View`
@@ -16,6 +17,7 @@ export const Filters = styled.View`
   align-items: center;
   justify-content: flex-end;
   margin-bottom: 35px;
+  margin-top: 40px;
 `;
 
 export const ButtonFilter = styled.TouchableOpacity.attrs({

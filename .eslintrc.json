@@ -37,7 +37,8 @@
         "tsx": "never"
       }
     ],
-    "camelcase": "off"
+    "camelcase": "off",
+    "global-require": "off"
   },
   "settings": {
     "import/resolver": {
