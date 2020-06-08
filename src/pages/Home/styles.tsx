@@ -1,6 +1,8 @@
 import styled from 'styled-components/native';
 import { StatusBar } from 'react-native';
 
+import { fontFamily } from '../../styles/global';
+
 export const Header = styled.ImageBackground.attrs({
   imageStyle: { width: 414, height: 414, marginTop: -207 },
   resizeMode: 'center',
@@ -32,7 +34,7 @@ export const Title = styled.Text`
   line-height: 38px;
   font-weight: bold;
   margin-bottom: 10px;
-  font-family: 'SFProDisplay-Bold';
+  font-family: ${fontFamily.bold};
 `;
 
 export const Description = styled.Text`
@@ -40,7 +42,7 @@ export const Description = styled.Text`
   line-height: 19px;
   color: #747476;
   margin-bottom: 25px;
-  font-family: 'SFProDisplay-Regular';
+  font-family: ${fontFamily.regular};
 `;
 
 export const FormSearch = styled.View`
@@ -60,5 +62,5 @@ export const InputSearch = styled.TextInput.attrs({
   line-height: 19px;
   color: #747476;
   margin-left: 10px;
-  font-family: 'SFProDisplay-Regular';
+  font-family: ${fontFamily.regular};
 `;

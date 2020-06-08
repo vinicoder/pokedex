@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { colorTypes } from '../../styles';
+import { pokemonTypes, fontFamily } from '../../styles/global';
 
 interface ContainerProps {
   type: string;
@@ -10,7 +10,7 @@ export const Container = styled.ImageBackground<ContainerProps>`
   flex-direction: row;
   align-items: center;
   background-color: ${(props) =>
-    props.type ? colorTypes[props.type].background : '#CCC'};
+    props.type ? pokemonTypes[props.type].colors.background : '#CCC'};
   border-radius: 10px;
   padding: 20px;
 `;
@@ -19,15 +19,24 @@ export const Info = styled.View`
   flex: 1;
 `;
 
-export const Number = styled.Text``;
+export const Number = styled.Text`
+  font-size: 12px;
+  font-weight: bold;
+  font-family: ${fontFamily.bold};
+`;
 
-export const Name = styled.Text``;
+export const Name = styled.Text`
+  color: #fff;
+  font-family: ${fontFamily.bold};
+  font-size: 26px;
+  line-height: 31px;
+  text-transform: capitalize;
+  margin-bottom: 5px;
+`;
 
-export const Badges = styled.View``;
-
-export const Badge = styled.View``;
-
-export const BadgeTitle = styled.Text``;
+export const Badges = styled.View`
+  flex-direction: row;
+`;
 
 export const ImageContainer = styled.View`
   width: 130px;

@@ -3,6 +3,7 @@ import { ActivityIndicator } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import axios from 'axios';
 import api from '../../services/api';
+import { formatNumber } from '../../utils';
 
 import {
   Container,
@@ -12,12 +13,10 @@ import {
   Number,
   Name,
   Badges,
-  Badge,
-  BadgeTitle,
 } from './styles';
 
 import bgItem from '../../assets/item/bg.png';
-import IconGrass from '../../assets/icons/type-grass.svg';
+import Badge from '../Badge';
 
 interface Props {
   url: string;
@@ -43,10 +42,6 @@ const Item: React.FC<Props> = ({ url }: Props) => {
   );
   const [image, setImage] = useState<string>('');
   const [imageFallback, setImageFallback] = useState<boolean>(false);
-
-  function formatNumber(number: string) {
-    return `#${number.padStart(3, '0')}`;
-  }
 
   useEffect(() => {
     if (pokemonData.id) return;
@@ -91,13 +86,12 @@ const Item: React.FC<Props> = ({ url }: Props) => {
       ) : (
         <Container source={bgItem} type={pokemonData.types[0].type.name}>
           <Info>
-            <Number>{formatNumber(String(pokemonData.id))}</Number>
+            <Number>{formatNumber(pokemonData.id)}</Number>
             <Name>{pokemonData.name}</Name>
             <Badges>
-              <Badge>
-                <IconGrass />
-                <BadgeTitle>Grass</BadgeTitle>
-              </Badge>
+              {pokemonData.types.map((badge) => (
+                <Badge key={badge.type.name} type={badge.type.name} />
+              ))}
             </Badges>
           </Info>
           <ImageContainer>
