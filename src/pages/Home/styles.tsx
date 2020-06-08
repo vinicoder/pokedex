@@ -8,10 +8,8 @@ export const Header = styled.ImageBackground.attrs({
   resizeMode: 'center',
 })`
   background-color: #fff;
-  padding-bottom: 20px;
-  padding-top: ${`${
-    StatusBar.currentHeight ? 40 + StatusBar.currentHeight : 40
-  }px`};
+  padding: ${`${StatusBar.currentHeight ? 40 + StatusBar.currentHeight : 40}px`}
+    40px 20px 40px;
 `;
 
 export const Filters = styled.View`

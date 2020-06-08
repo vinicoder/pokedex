@@ -59,7 +59,7 @@ const Home: React.FC = () => {
         Search for Pokémon by name or using the National Pokédex number.
       </Description>
       <FormSearch>
-        <IconSearch />
+        <IconSearch width={20} height={20} />
         <InputSearch placeholder="What Pokémon are you looking for?" />
       </FormSearch>
     </Header>
@@ -73,7 +73,6 @@ const Home: React.FC = () => {
       stickyHeaderIndices={[0]}
       ListHeaderComponent={ListHeader}
       showsVerticalScrollIndicator={false}
-      contentContainerStyle={{ paddingHorizontal: 40 }}
     />
   );
 };
