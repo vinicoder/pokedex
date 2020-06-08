@@ -29,6 +29,11 @@ interface PokemonProps {
   sprites: {
     front_default: string;
   };
+  types: {
+    type: {
+      name: string;
+    };
+  }[];
 }
 
 const Item: React.FC<Props> = ({ url }: Props) => {
@@ -84,7 +89,7 @@ const Item: React.FC<Props> = ({ url }: Props) => {
       {loading ? (
         <ActivityIndicator />
       ) : (
-        <Container source={bgItem}>
+        <Container source={bgItem} type={pokemonData.types[0].type.name}>
           <Info>
             <Number>{formatNumber(String(pokemonData.id))}</Number>
             <Name>{pokemonData.name}</Name>

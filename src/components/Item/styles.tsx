@@ -1,10 +1,16 @@
 import styled from 'styled-components/native';
+import { colorTypes } from '../../styles';
 
-export const Container = styled.ImageBackground`
+interface ContainerProps {
+  type: string;
+}
+
+export const Container = styled.ImageBackground<ContainerProps>`
   margin-top: 30px;
   flex-direction: row;
   align-items: center;
-  background-color: #ccc;
+  background-color: ${(props) =>
+    props.type ? colorTypes[props.type].background : '#CCC'};
   border-radius: 10px;
   padding: 20px;
 `;
