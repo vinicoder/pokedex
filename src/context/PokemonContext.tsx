@@ -13,14 +13,14 @@ interface PokemonContextData {
   loadPokemon(data: loadParams): Promise<void>;
 }
 
-export const PokemonContext = createContext<PokemonContextData>(
-  {} as PokemonContextData,
-);
-
 interface PokemonProviderData {
   children: Element;
   name: string;
 }
+
+export const PokemonContext = createContext<PokemonContextData>(
+  {} as PokemonContextData,
+);
 
 export const PokemonProvider: React.FC<PokemonProviderData> = ({
   children,
