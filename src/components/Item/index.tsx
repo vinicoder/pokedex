@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { ActivityIndicator } from 'react-native';
+import React, { useState, useEffect, useCallback } from 'react';
+import { ActivityIndicator, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import api from '../../services/api';
-import { formatNumber } from '../../utils';
+import { formatNumber, PokemonProps } from '../../utils';
 
 import {
   Container,
@@ -12,70 +13,63 @@ import {
   Badges,
 } from './styles';
 
-import bgItem from '../../assets/item/bg.png';
 import Badge from '../Badge';
-
 import Image from '../Image';
 
 interface Props {
   url: string;
 }
 
-interface PokemonProps {
-  name: string;
-  id: number;
-  sprites: {
-    front_default: string;
-  };
-  types: {
-    type: {
-      name: string;
-    };
-  }[];
-}
-
 const Item: React.FC<Props> = ({ url }: Props) => {
+  const navigation = useNavigation();
   const [loading, setLoading] = useState<boolean>(true);
   const [pokemonData, setPokemonData] = useState<PokemonProps>(
     {} as PokemonProps,
   );
 
+  const loadPokemon = useCallback(async () => {
+    try {
+      const response = await api.get(url);
+      setPokemonData(response.data);
+    } catch (e) {
+      console.log(`loadPokemon(): ${e}`);
+    }
+
+    setLoading(false);
+  }, [url]);
+
   useEffect(() => {
     if (pokemonData.id) return;
 
-    async function loadPokemon() {
-      try {
-        const response = await api.get(url);
-        setPokemonData(response.data);
-      } catch (e) {
-        console.log(`loadPokemon(): ${e}`);
-      }
-
-      setLoading(false);
-    }
-
     loadPokemon();
-  }, [url, pokemonData]);
+  }, [pokemonData]);
+
+  const handleToDetail = () =>
+    navigation.navigate('detail', { pokemon: pokemonData });
 
   return (
     <>
       {loading ? (
-        <ActivityIndicator />
-      ) : (
-        <Container source={bgItem} type={pokemonData.types[0].type.name}>
-          <Info>
-            <Number>{formatNumber(pokemonData.id)}</Number>
-            <Name>{pokemonData.name}</Name>
-            <Badges>
-              {pokemonData.types.map((badge) => (
-                <Badge key={badge.type.name} type={badge.type.name} />
-              ))}
-            </Badges>
-          </Info>
-          <ImageContainer>
-            <Image pokemon={pokemonData} width={130} height={130} />
-          </ImageContainer>
+        <Container>
+          <ActivityIndicator />
         </Container>
+      ) : (
+        <TouchableOpacity onPress={handleToDetail} activeOpacity={0.7}>
+          <Container type={pokemonData.types[0].type.name}>
+            <Info>
+              <Number>{formatNumber(pokemonData.id)}</Number>
+              <Name>{pokemonData.name}</Name>
+              <Badges>
+                {pokemonData.types.map((badge) => (
+                  <Badge key={badge.type.name} type={badge.type.name} />
+                ))}
+              </Badges>
+            </Info>
+            <ImageContainer>
+              <Image pokemon={pokemonData} width={130} height={130} />
+            </ImageContainer>
+          </Container>
+        </TouchableOpacity>
       )}
     </>
   );

@@ -2,11 +2,16 @@ import styled from 'styled-components/native';
 import { transparentize } from 'polished';
 import { pokemonTypes, fontFamily } from '../../styles/global';
 
+import bgItem from '../../assets/item/bg.png';
+
 interface ContainerProps {
-  type: string;
+  type?: string;
 }
 
-export const Container = styled.ImageBackground<ContainerProps>`
+export const Container = styled.ImageBackground.attrs({
+  source: bgItem,
+})<ContainerProps>`
+  min-height: 125px;
   flex-direction: row;
   align-items: center;
   background-color: ${(props) =>

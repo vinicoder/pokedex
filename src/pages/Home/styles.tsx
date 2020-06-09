@@ -8,7 +8,7 @@ export const Header = styled.ImageBackground.attrs({
   resizeMode: 'center',
 })`
   background-color: #fff;
-  padding: ${`${StatusBar.currentHeight ? 40 + StatusBar.currentHeight : 40}px`}
+  padding: ${`${StatusBar.currentHeight ? 60 + StatusBar.currentHeight : 60}px`}
     40px 20px 40px;
 `;
 
@@ -33,6 +33,7 @@ export const Title = styled.Text`
   font-weight: bold;
   margin-bottom: 10px;
   font-family: ${fontFamily.bold};
+  margin-top: 40px;
 `;
 
 export const Description = styled.Text`
@@ -61,4 +62,10 @@ export const InputSearch = styled.TextInput.attrs({
   color: #747476;
   margin-left: 10px;
   font-family: ${fontFamily.regular};
+`;
+
+export const Loading = styled.View`
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
 `;

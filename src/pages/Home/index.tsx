@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, ActivityIndicator, RefreshControl } from 'react-native';
 import api from '../../services/api';
 
 import {
@@ -10,6 +10,7 @@ import {
   Description,
   FormSearch,
   InputSearch,
+  Loading,
 } from './styles';
 
 import bgImage from '../../assets/home/bg.png';
@@ -26,42 +27,63 @@ interface DataProps {
 }
 
 const Home: React.FC = () => {
+  const [refreshing, setRefreshing] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<DataProps[]>([]);
+  const [offset, setOffset] = useState<number>(0);
+  const limit = 20;
+
+  async function loadPokemons() {
+    try {
+      setLoading(true);
+      const response = await api.get('pokemon', {
+        params: { offset, limit },
+      });
+      const { results, next } = response.data;
+
+      const newData = [...data, ...results];
+
+      setData(newData);
+
+      if (!next) return;
+
+      setOffset(Number(offset) + limit);
+    } catch (e) {
+      console.log(`loadPokemons: ${e}`);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function refreshList() {
+    setRefreshing(true);
+    setOffset(0);
+
+    await loadPokemons();
+
+    setRefreshing(false);
+  }
 
   useEffect(() => {
-    async function loadPokemons() {
-      try {
-        const response = await api.get('pokemon');
-        setData(response.data.results);
-      } catch (e) {
-        console.log(`loadPokemons: ${e}`);
-      }
-    }
-
     loadPokemons();
   }, []);
 
+  const Loader = () => {
+    if (!loading) return null;
+
+    return (
+      <Loading>
+        <ActivityIndicator color="#EA5D60" />
+      </Loading>
+    );
+  };
+
   const ListHeader = () => (
     <Header source={bgImage}>
-      <Filters>
-        <ButtonFilter>
-          <IconGeneration />
-        </ButtonFilter>
-        <ButtonFilter>
-          <IconSort />
-        </ButtonFilter>
-        <ButtonFilter>
-          <IconFilter />
-        </ButtonFilter>
-      </Filters>
       <Title>Pokédex</Title>
       <Description>
         Search for Pokémon by name or using the National Pokédex number.
       </Description>
-      <FormSearch>
-        <IconSearch width={20} height={20} />
-        <InputSearch placeholder="What Pokémon are you looking for?" />
-      </FormSearch>
     </Header>
   );
 
@@ -73,6 +95,16 @@ const Home: React.FC = () => {
       stickyHeaderIndices={[0]}
       ListHeaderComponent={ListHeader}
       showsVerticalScrollIndicator={false}
+      onEndReached={loadPokemons}
+      onEndReachedThreshold={0.1}
+      ListFooterComponent={Loader}
+      refreshControl={
+        <RefreshControl
+          refreshing={refreshing}
+          onRefresh={refreshList}
+          tintColor="#EA5D60"
+        />
+      }
     />
   );
 };
