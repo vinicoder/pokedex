@@ -75,8 +75,8 @@ export const ContentWrapper = styled.View`
 export const ContentTitle = styled.Text<ContainerProps>`
   color: ${(props) =>
     props.type ? pokemonTypes[props.type].colors.featured : '#CCC'};
-  font-size: 20px;
-  line-height: 23px;
+  font-size: 18px;
+  line-height: 20px;
   font-family: ${fontFamily.bold};
   margin-bottom: 20px;
 `;
