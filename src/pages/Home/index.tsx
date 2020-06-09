@@ -2,24 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { FlatList, ActivityIndicator, RefreshControl } from 'react-native';
 import api from '../../services/api';
 
-import {
-  Header,
-  Filters,
-  ButtonFilter,
-  Title,
-  Description,
-  FormSearch,
-  InputSearch,
-  Loading,
-} from './styles';
+import { Header, Title, Description, Loading } from './styles';
 
 import bgImage from '../../assets/home/bg.png';
-import IconGeneration from '../../assets/icons/generation.svg';
-import IconSort from '../../assets/icons/sort.svg';
-import IconFilter from '../../assets/icons/filter.svg';
-import IconSearch from '../../assets/icons/search.svg';
 
 import Item from '../../components/Item';
+
+import { PokemonProvider } from '../../context/PokemonContext';
 
 interface DataProps {
   name: string;
@@ -90,7 +79,11 @@ const Home: React.FC = () => {
   return (
     <FlatList
       data={data}
-      renderItem={({ item }) => <Item url={item.url} />}
+      renderItem={({ item }) => (
+        <PokemonProvider name={item.name}>
+          <Item url={item.url} />
+        </PokemonProvider>
+      )}
       keyExtractor={(item) => item.name}
       stickyHeaderIndices={[0]}
       ListHeaderComponent={ListHeader}

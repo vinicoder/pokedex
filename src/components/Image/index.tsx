@@ -6,6 +6,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 interface ImageProps {
   pokemon: {
+    name: string;
     id: number;
     sprites: {
       front_default: string;
@@ -24,13 +25,17 @@ const Image: React.SFC<ImageProps> = ({
   const [imageFallback, setImageFallback] = useState<boolean>(false);
 
   const loadImage = useCallback(async () => {
-    const imageData = await AsyncStorage.getItem(`pokemon-${pokemon.id}`);
+    if (image.length > 0) return;
+    if (imageFallback) return;
+
+    const imageData = await AsyncStorage.getItem(
+      `@Pokemon:${pokemon.name}:image`,
+    );
+
     if (imageData) {
       setImage(imageData);
       return;
     }
-
-    if (imageFallback) return;
 
     const response = await axios
       .get(
@@ -44,27 +49,14 @@ const Image: React.SFC<ImageProps> = ({
       return;
     }
 
-    setImage(response.data);
-  }, [pokemon]);
+    const { data } = response;
+    await AsyncStorage.setItem(`@Pokemon:${pokemon.name}:image`, data);
+    setImage(data);
+  }, [pokemon, imageFallback, image]);
 
   useEffect(() => {
     loadImage();
-
-    return () => setImageFallback(true);
-  }, []);
-
-  const storeImage = useCallback(async () => {
-    try {
-      await AsyncStorage.setItem(`pokemon-${pokemon.id}`, image);
-    } catch (e) {
-      console.log(`storeImage(): ${pokemon.id} - ${e}`);
-    }
-  }, [image, pokemon]);
-
-  useEffect(() => {
-    if (image.length <= 0) return;
-    storeImage();
-  }, [image]);
+  }, [loadImage]);
 
   return (
     <>

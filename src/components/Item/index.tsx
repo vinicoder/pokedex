@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { ActivityIndicator, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import api from '../../services/api';
-import { formatNumber, PokemonProps } from '../../utils';
+import { formatNumber } from '../../utils';
 
 import {
   Container,
@@ -16,6 +15,8 @@ import {
 import Badge from '../Badge';
 import Image from '../Image';
 
+import { PokemonContext } from '../../context/PokemonContext';
+
 interface Props {
   url: string;
 }
@@ -23,26 +24,14 @@ interface Props {
 const Item: React.FC<Props> = ({ url }: Props) => {
   const navigation = useNavigation();
   const [loading, setLoading] = useState<boolean>(true);
-  const [pokemonData, setPokemonData] = useState<PokemonProps>(
-    {} as PokemonProps,
-  );
-
-  const loadPokemon = useCallback(async () => {
-    try {
-      const response = await api.get(url);
-      setPokemonData(response.data);
-    } catch (e) {
-      console.log(`loadPokemon(): ${e}`);
-    }
-
-    setLoading(false);
-  }, [url]);
+  const { pokemonData, loadPokemon } = useContext(PokemonContext);
 
   useEffect(() => {
-    if (pokemonData.id) return;
+    if (!url) return;
 
-    loadPokemon();
-  }, [pokemonData]);
+    const callback = () => setLoading(false);
+    loadPokemon({ url, callback });
+  }, [url, loadPokemon]);
 
   const handleToDetail = () =>
     navigation.navigate('detail', { pokemon: pokemonData });
