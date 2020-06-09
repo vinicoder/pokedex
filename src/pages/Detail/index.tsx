@@ -1,6 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { pokemonTypes } from '../../styles/global';
 import { PokemonProps, formatNumber, formatText } from '../../utils';
 
 import {
@@ -20,6 +21,7 @@ import {
   Stat,
   StatName,
   StatValue,
+  Slot,
 } from './styles';
 
 import IconReturn from '../../assets/icons/arrow-left.svg';
@@ -34,6 +36,24 @@ interface DetailParams {
     };
   };
 }
+
+interface SlotsParams {
+  total: number;
+  type: string;
+}
+
+const Slots: React.FC<SlotsParams> = ({ total, type }: SlotsParams) => {
+  const elements = [];
+  for (let i = 0; i < total; i++) {
+    const Icon = pokemonTypes[type].icon.default;
+    elements.push(
+      <Slot type={type} key={i}>
+        <Icon width={10} height={10} />
+      </Slot>,
+    );
+  }
+  return <>{elements}</>;
+};
 
 const Detail: React.FC<DetailParams> = ({ route }: DetailParams) => {
   const navigation = useNavigation();
@@ -87,17 +107,6 @@ const Detail: React.FC<DetailParams> = ({ route }: DetailParams) => {
             </Stat>
           </ContentStats>
           <ContentTitle type={pokemon.types[0].type.name}>
-            Base Stats
-          </ContentTitle>
-          <ContentStats>
-            {pokemon.stats.map((stat) => (
-              <Stat key={stat.stat.name}>
-                <StatName>{formatText(stat.stat.name)}</StatName>
-                <StatValue>{stat.base_stat}</StatValue>
-              </Stat>
-            ))}
-          </ContentStats>
-          <ContentTitle type={pokemon.types[0].type.name}>
             Abilities
           </ContentTitle>
           <ContentStats>
@@ -105,10 +114,21 @@ const Detail: React.FC<DetailParams> = ({ route }: DetailParams) => {
               <Stat key={ability.ability.name}>
                 <StatName>
                   {`${formatText(ability.ability.name)} ${
-                    ability.is_hidden && '(hidden ability)'
+                    ability.is_hidden ? '(hidden ability)' : ''
                   }`}
                 </StatName>
-                <StatValue>{ability.slot}</StatValue>
+                <Slots total={ability.slot} type={pokemon.types[0].type.name} />
+              </Stat>
+            ))}
+          </ContentStats>
+          <ContentTitle type={pokemon.types[0].type.name}>
+            Base Stats
+          </ContentTitle>
+          <ContentStats>
+            {pokemon.stats.map((stat) => (
+              <Stat key={stat.stat.name}>
+                <StatName>{formatText(stat.stat.name)}</StatName>
+                <StatValue>{stat.base_stat}</StatValue>
               </Stat>
             ))}
           </ContentStats>

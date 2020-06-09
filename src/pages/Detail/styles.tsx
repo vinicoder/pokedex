@@ -106,3 +106,14 @@ export const StatValue = styled.Text`
   line-height: 19px;
   color: #747476;
 `;
+
+export const Slot = styled.View<ContainerProps>`
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+  background-color: ${(props) =>
+    props.type ? pokemonTypes[props.type].colors.featured : '#CCC'};
+`;
