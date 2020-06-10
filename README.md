@@ -2,7 +2,7 @@
 
 Criei este projeto como forma de estudo para poder me aprofundar em React Native utilizando TypeScript.
 
-&nbsp;&nbsp;
+&nbsp;
 
 ### 🚀 Recursos
 
