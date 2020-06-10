@@ -73,6 +73,7 @@ Para rodar e já abrir diretamente no emulador, ao invés do comando acima, digi
 
 - [Flávio Farias](https://www.behance.net/flaviofpsj 'Flávio Farias') por ceder o protótipo utilizado neste teste.
 - [PokéAPI](https://pokeapi.co/about 'PokéAPI') por disponibilizar a API do Pokédex
+- [Justin J. Novack](https://github.com/jnovack/) e [veekun.com](https://veekun.com/) por ceder as imagens em SVG
 
 &nbsp;&nbsp;
 
