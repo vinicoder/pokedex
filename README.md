@@ -39,7 +39,7 @@ Para utilizar e participar na colaboração deste projeto será necessário ter 
 
 &nbsp;&nbsp;
 
-> **Dica:** A Rocketseat preparou uma documentação muito completa ensinando como preparar o ambiente de desenvolvimento de maneira apropriada para o seu sistema operacional. [Acesse aqui a página.](https://react-native.rocketseat.dev/ 'Acesse aqui a página.')
+> **Dica:** A **[Rocketseat 💜](https://rocketseat.com.br/ 'Rocketseat')** preparou uma documentação muito completa ensinando como preparar o ambiente de desenvolvimento de maneira apropriada para o seu sistema operacional. [Acesse aqui a página.](https://react-native.rocketseat.dev/ 'Acesse aqui a página.')
 
 &nbsp;&nbsp;
 
