@@ -2,7 +2,9 @@
 
 Criei este projeto como forma de estudo para poder me aprofundar em React Native utilizando TypeScript.
 
-#### 🚀 Recursos
+&nbsp;&nbsp;
+
+### 🚀 Recursos
 
 - TypeScript
 - React
@@ -16,15 +18,15 @@ Criei este projeto como forma de estudo para poder me aprofundar em React Native
 - Prettier
 - PokéAPI
 
----
+&nbsp;&nbsp;
 
-#### 📱 Preview
+### 📱 Preview
 
 ![Demonstração de lista com pokémons](https://media.giphy.com/media/SVNJEA1VjYWUmyp9EJ/giphy.gif) ![Demonstração de páginas específicas de pokémons](https://media.giphy.com/media/YqtH0wznEfGtUxk3vx/giphy.gif)
 
----
+&nbsp;&nbsp;
 
-#### 📝 Como usar
+### 📝 Como usar
 
 Para utilizar e participar na colaboração deste projeto será necessário ter algumas ferramentas de desenvolvimento em mãos:
 
@@ -35,55 +37,45 @@ Para utilizar e participar na colaboração deste projeto será necessário ter 
 - [CocoaPods](https://cocoapods.org/ 'CocoaPods') (Mac)
 - [Android Studio](https://developer.android.com/studio 'Android Studio') (Windows/Mac)
 
+&nbsp;&nbsp;
+
 > **Dica:** A Rocketseat preparou uma documentação muito completa ensinando como preparar o ambiente de desenvolvimento de maneira apropriada para o seu sistema operacional. [Acesse aqui a página.](https://react-native.rocketseat.dev/ 'Acesse aqui a página.')
 
----
+&nbsp;&nbsp;
 
-Com tudo já instalado você precisará executar alguns comandos em seu terminal.
+#### Com tudo já instalado você precisará executar alguns comandos em seu terminal.
 
-Instale todas as dependências do projeto:
+Instale todas as dependências do projeto: `npm install` ou com Yarn `yarn`
 
-    npm install
+> **Obs:** Caso você esteja em um ambiente Mac OS, será necessário rodar o CocoaPods dentro da pasta **ios** que fica dentro da raiz do seu projeto.
 
-ou com Yarn
+`cd ios && pod install && cd ../`
 
-    yarn
+&nbsp;
+Feito isso, vamos rodar o nosso projeto com o seguinte comando: `npm run start` ou com Yarn `yarn start`
 
-**Obs: **Caso você esteja em um ambiente Mac OS, será necessário rodar o CocoaPods dentro da pasta **ios** que fica dentro da raiz do seu projeto.
-
-    cd ios && pod install && cd ../
-
-Feito isso, vamos rodar o nosso projeto com o seguinte comando:
-
-    npm run start
-
-ou com Yarn
-
-    yarn start
-
+&nbsp;
 Para rodar e já abrir diretamente no emulador, ao invés do comando acima, digite o seguinte comando:
 
-**IOS:**
+🍎 **IOS:** `npm run ios`
 
-    npm run ios
+🤖 **Android:** `npm run android`
 
-**Android:**
+> **Obs:** Caso você esteja utilizando Yarn, troque onde está npm run por yarn. Ex: `yarn ios`
 
-    npm run android
+&nbsp;&nbsp;
 
-> **Obs: **Caso você esteja utilizando Yarn, troque onde está npm run por yarn. Ex: `yarn ios`
+### ✔️ **Pronto! O projeto estará preparado para o desenvolvimento.**
 
----
+&nbsp;&nbsp;
 
-#### ✔️ **Pronto! O projeto estará preparado para o desenvolvimento.**
-
----
-
-#### 🎉 Agradecimentos
+### 🎉 Agradecimentos
 
 - [Flávio Farias](https://www.behance.net/flaviofpsj 'Flávio Farias') por ceder o protótipo utilizado neste teste.
 - [PokéAPI](https://pokeapi.co/about 'PokéAPI') por disponibilizar a API do Pokédex
 
---
+&nbsp;&nbsp;
 
-❤️ Feito com carinho por [Vinicius de Moraes](https://www.linkedin.com/in/viniciuscoder/)
+---
+
+❤️ Desenvolvido com carinho por [Vinicius de Moraes](https://www.linkedin.com/in/viniciuscoder/)
