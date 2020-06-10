@@ -2,7 +2,7 @@
 
 Criei este projeto como forma de estudo para poder me aprofundar em React Native utilizando TypeScript.
 
-&nbsp;
+![Demonstração de lista com pokémons](https://media.giphy.com/media/SVNJEA1VjYWUmyp9EJ/giphy.gif) ![Demonstração de páginas específicas de pokémons](https://media.giphy.com/media/YqtH0wznEfGtUxk3vx/giphy.gif)
 
 ### 🚀 Recursos
 
@@ -17,12 +17,6 @@ Criei este projeto como forma de estudo para poder me aprofundar em React Native
 - Eslint
 - Prettier
 - PokéAPI
-
-&nbsp;&nbsp;
-
-### 📱 Preview
-
-![Demonstração de lista com pokémons](https://media.giphy.com/media/SVNJEA1VjYWUmyp9EJ/giphy.gif) ![Demonstração de páginas específicas de pokémons](https://media.giphy.com/media/YqtH0wznEfGtUxk3vx/giphy.gif)
 
 &nbsp;&nbsp;
 
