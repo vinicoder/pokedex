@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useState, useEffect } from 'react';
+import React, { createContext, useCallback, useState } from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 import { PokemonProps } from '../utils';
 import api from '../services/api';
